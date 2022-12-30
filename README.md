@@ -6,7 +6,7 @@ Welcome to my blackjack Project! I hope you have as much fun playing with it as 
 
 Game/Project Assumptions
 
-1) if a player draws an ace while his current hand total is equal to 11 or greater, they will choose for their Ace card to be of value 1
+1) If a player draws an ace while his current hand total is equal to 11 or greater, they will choose for their Ace card to be of value 1
 
 2) There is only one dealer and one player
 
