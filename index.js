@@ -78,16 +78,19 @@ function startGame() {
     playerCards = deck.pop();
     playerTotal += getPlayerValue(playerCards);
     
-    //console.log(dealersHiddenCards);
-    console.log(dealerTotal);
+    console.log(dealersHiddenCards);
+    //console.log(dealerTotal);
     //console.log(playerCards);
     //console.log(playerTotal);
     
     while (dealerTotal < 17 ) {
         let cardImg = document.createElement("img");
-        let card = dealersHiddenCards;
+        let card = deck.pop();
+        dealerTotal += getDealerValue(card);
         cardImg.src = "./cards/" + card + ".png";
+        
         document.getElementById("dealer-cards").append(cardImg);
+        console.log(dealerTotal);
     }
     
 }
