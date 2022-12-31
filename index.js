@@ -37,24 +37,6 @@ function shuffleDeck() {
     console.log(deck); 
 }
 
-function startGame() {
-    dealersHiddenCards = deck.pop();
-    playerCards = deck.pop();
-    dealerTotal += getDealerValue(dealersHiddenCards);
-    playerTotal += getPlayerValue(playersCards);
-    // console.log(dealersHiddenCards);
-    // console.log(dealerTotal);
-    // console.log(playerCards);
-    // console.log(playerTotal);
-    while (dealerTotal < 17 ) {
-        let cardImg = document.createElement("img");
-        let card = deck.pop();
-        cardImg.src = "./cards/" + card + ".png";
-        document.getElementById("dealer-cards").append(cardImg);
-    }
-    console.log(dealerTotal);
-}
-
 function getDealerValue(card) {
     let cardInfo = card.split("-");
     let value = cardInfo[0];
@@ -88,3 +70,25 @@ function getPlayerValue(card) {
     }
     return parseInt(value);
 }
+
+function startGame() {
+    dealersHiddenCards = deck.pop();
+    dealerTotal += getDealerValue(dealersHiddenCards);
+    
+    playerCards = deck.pop();
+    playerTotal += getPlayerValue(playerCards);
+    
+    //console.log(dealersHiddenCards);
+    console.log(dealerTotal);
+    //console.log(playerCards);
+    //console.log(playerTotal);
+    
+    while (dealerTotal < 17 ) {
+        let cardImg = document.createElement("img");
+        let card = dealersHiddenCards;
+        cardImg.src = "./cards/" + card + ".png";
+        document.getElementById("dealer-cards").append(cardImg);
+    }
+    
+}
+
