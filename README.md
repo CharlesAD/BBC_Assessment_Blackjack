@@ -25,10 +25,12 @@ Joker = 10
 
 2) There is only one dealer and one player
 
-3) The dealer cannot "Hit" or "Stay". One the player is capable of this
+3) If the Dealer's total is 16 or less they must draw and if it is 17 or more they must stand
 
-4) The player can "Hit" or "Stay" as many times as they would like
+4) The dealer cannot "Hit" or "Stay". One the player is capable of this
 
-5) Once you have decided the value of your Ace card you cannot change it
+5) The player can "Hit" or "Stay" as many times as they would like
 
-6) If both the Dealer and The Player hit 21 the game ends in a draw
+6) Once you have decided the value of your Ace card you cannot change it
+
+7) If both the Dealer and The Player hit 21 the game ends in a draw

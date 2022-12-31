@@ -34,18 +34,25 @@ function shuffleDeck() {
         deck[location1] = deck[location2];
         deck[location2] = temp;
     }
-    console.log(deck);
+    console.log(deck); 
 }
 
 function startGame() {
     dealersHiddenCards = deck.pop();
-    playersCards = deck.pop();
+    playerCards = deck.pop();
     dealerTotal += getDealerValue(dealersHiddenCards);
     playerTotal += getPlayerValue(playersCards);
-    console.log(dealersHiddenCards);
+    // console.log(dealersHiddenCards);
+    // console.log(dealerTotal);
+    // console.log(playerCards);
+    // console.log(playerTotal);
+    while (dealerTotal < 17 ) {
+        let cardImg = document.createElement("img");
+        let card = deck.pop();
+        cardImg.src = "./cards/" + card + ".png";
+        document.getElementById("dealer-cards").append(cardImg);
+    }
     console.log(dealerTotal);
-    console.log(playersCards);
-    console.log(playerTotal);
 }
 
 function getDealerValue(card) {

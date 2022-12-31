@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "BBC_Assessment_Blackjack",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "BBC_Assessment_Blackjack"
+	}
+}
