@@ -1,8 +1,17 @@
 let deck;
 let values;
+
+let dealersHiddenCards;
+let dealerTotal = 0;
+
+let playerTotal = 0;
+
 window.onload = function() {
     createDeck();
     shuffleDeck();
+    startGame();
+}
+
 function createDeck(){
     let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
     let types = ["C", "D", "H", "S"];
@@ -26,4 +35,49 @@ function shuffleDeck() {
         deck[location2] = temp;
     }
     console.log(deck);
+}
+
+function startGame() {
+    dealersHiddenCards = deck.pop();
+    playersCards = deck.pop();
+    dealerTotal += getDealerValue(dealersHiddenCards);
+    playerTotal += getPlayerValue(playersCards);
+    console.log(dealersHiddenCards);
+    console.log(dealerTotal);
+    console.log(playersCards);
+    console.log(playerTotal);
+}
+
+function getDealerValue(card) {
+    let cardInfo = card.split("-");
+    let value = cardInfo[0];
+
+    if(isNaN(value)){
+        if(value == "A") {
+            if(dealerTotal >= 11){
+                return 1;
+            }
+            return 11;
+            
+        }
+        return 10
+    }
+    return parseInt(value);
+}
+
+function getPlayerValue(card) {
+    let cardInfo = card.split("-");
+    let value = cardInfo[0];
+
+    if(isNaN(value)){
+        if(value == "A") {
+            if(playerTotal >= 11){
+                return 1;
+            }
+            return 11;
+            
+        }
+        return 10
+    }
+    return parseInt(value);
 }
