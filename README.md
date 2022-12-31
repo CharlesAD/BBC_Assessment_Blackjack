@@ -16,4 +16,4 @@ Game/Project Assumptions
 
 5) Once you have decided the value of your Ace card you cannot change it
 
-6) If both the Dealer and The Player hit 21 the game ends in a draw 
+6) If both the Dealer and The Player hit 21 the game ends in a draw
