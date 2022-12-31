@@ -25,6 +25,7 @@ function createDeck(){
 // console.log(deck);
 }
 
+
 function shuffleDeck() {
     for(i = 0; i < 1000; i++) {
         let location1 = Math.floor((Math.random() * deck.length));
@@ -35,6 +36,44 @@ function shuffleDeck() {
         deck[location2] = temp;
     }
     console.log(deck); 
+}
+
+function startGame() {
+    dealersHiddenCards = deck.pop();
+    dealerTotal += getDealerValue(dealersHiddenCards);
+    
+    playerCards = deck.pop();
+    playerTotal += getPlayerValue(playerCards);
+    let firstCard = document.createElement("img");
+    firstCard.src = "./cards/" + playerCards + ".png";
+    document.getElementById("player-cards").append(firstCard);
+    
+    console.log(dealersHiddenCards);
+    //console.log(dealerTotal);
+    //console.log(playerCards);
+    //console.log(playerTotal);
+    
+    while (dealerTotal < 17 ) {
+        let cardImg = document.createElement("img");
+        let card = deck.pop();
+        dealerTotal += getDealerValue(card);
+        cardImg.src = "./cards/" + card + ".png";
+        
+        document.getElementById("dealer-cards").append(cardImg);
+        
+    }
+    console.log(dealerTotal);
+    
+    for (i = 1; i < 2; i++) {
+        let cardImg = document.createElement("img");
+        let card = deck.pop();
+        playerTotal += getPlayerValue(card);
+        cardImg.src = "./cards/" + card + ".png";
+        
+        document.getElementById("player-cards").append(cardImg);
+    }
+    console.log(playerCards);
+    console.log(playerTotal);
 }
 
 function getDealerValue(card) {
@@ -71,27 +110,5 @@ function getPlayerValue(card) {
     return parseInt(value);
 }
 
-function startGame() {
-    dealersHiddenCards = deck.pop();
-    dealerTotal += getDealerValue(dealersHiddenCards);
-    
-    playerCards = deck.pop();
-    playerTotal += getPlayerValue(playerCards);
-    
-    console.log(dealersHiddenCards);
-    //console.log(dealerTotal);
-    //console.log(playerCards);
-    //console.log(playerTotal);
-    
-    while (dealerTotal < 17 ) {
-        let cardImg = document.createElement("img");
-        let card = deck.pop();
-        dealerTotal += getDealerValue(card);
-        cardImg.src = "./cards/" + card + ".png";
-        
-        document.getElementById("dealer-cards").append(cardImg);
-        console.log(dealerTotal);
-    }
-    
-}
+
 
