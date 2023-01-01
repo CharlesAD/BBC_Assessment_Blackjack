@@ -120,6 +120,8 @@ function stay() {
         message = "You Lose!"
     }
 
+    document.getElementById("dealer-sum").innerText = dealerTotal;
+    document.getElementById("player-sum").innerText = playerTotal;
     document.getElementById("results").innerText = message;
 }
 
