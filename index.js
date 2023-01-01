@@ -6,6 +6,8 @@ let dealerTotal = 0;
 
 let playerTotal = 0;
 
+
+
 window.onload = function() {
     createDeck();
     shuffleDeck();
@@ -42,11 +44,14 @@ function startGame() {
     dealersHiddenCards = deck.pop();
     dealerTotal += getDealerValue(dealersHiddenCards);
     
+    for (i = 0; i < 2; i++){
     playerCards = deck.pop();
     playerTotal += getPlayerValue(playerCards);
-    let firstCard = document.createElement("img");
-    firstCard.src = "./cards/" + playerCards + ".png";
-    document.getElementById("player-cards").append(firstCard);
+    let card = document.createElement("img");
+    card.src = "./cards/" + playerCards + ".png";
+    document.getElementById("player-cards").prepend(card);
+    }
+    
     
     console.log(dealersHiddenCards);
     //console.log(dealerTotal);
@@ -64,16 +69,58 @@ function startGame() {
     }
     console.log(dealerTotal);
     
-    for (i = 1; i < 2; i++) {
-        let cardImg = document.createElement("img");
-        let card = deck.pop();
-        playerTotal += getPlayerValue(card);
-        cardImg.src = "./cards/" + card + ".png";
+    // for (i = 1; i < 2; i++) {
+    //     let cardImg = document.createElement("img");
+    //     let card = deck.pop();
+    //     playerTotal += getPlayerValue(card);
+    //     cardImg.src = "./cards/" + card + ".png";
         
-        document.getElementById("player-cards").append(cardImg);
-    }
+    //     document.getElementById("player-cards").append(cardImg);
+    // }
     console.log(playerCards);
     console.log(playerTotal);
+
+    document.getElementById("hit").addEventListener("click", hit);
+    document.getElementById("stay").addEventListener("click", stay);
+}
+
+function hit() {
+    if (playerTotal >= 21){
+        return;
+    }
+    playerCards = deck.pop();
+    playerTotal += getPlayerValue(playerCards);
+    let card = document.createElement("img");
+    card.src = "./cards/" + playerCards + ".png";
+    document.getElementById("player-cards").append(card);
+    console.log(playerTotal);
+}
+
+function stay() {
+    let cardReveal = document.createElement("img");
+    cardReveal.src = "./cards/" + dealersHiddenCards + ".png";
+    document.getElementById("dealer-cards").prepend(cardReveal);
+    document.getElementById("card-back").replaceWith("");
+
+
+    let message = "";
+    if (playerTotal > 21) {
+        message = "You Lose! You went BUST!"
+    }
+    else if (dealerTotal > 21) {
+        message = "You Win! The Dealer went BUST!"
+    }
+    else if (playerTotal == dealerTotal) {
+        message = "It's a Draw!"
+    }
+    else if (playerTotal > dealerTotal) {
+        message = "You Win!";
+    }
+    else if (playerTotal < dealerTotal) {
+        message = "You Lose!"
+    }
+
+    document.getElementById("results").innerText = message;
 }
 
 function getDealerValue(card) {
